@@ -1,0 +1,3 @@
+rootProject.name = "MaterialX UI Design"
+include ':app'
+include ':MaterialXUIDesign'
