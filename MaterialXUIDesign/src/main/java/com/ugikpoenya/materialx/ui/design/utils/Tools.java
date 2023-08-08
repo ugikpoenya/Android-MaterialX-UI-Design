@@ -27,6 +27,7 @@ import android.widget.Toast;
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
@@ -44,6 +45,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Tools {
+
+    public static void exitApp(Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setCancelable(true);
+        builder.setIcon(R.drawable.ic_baseline_cancel_24);
+        builder.setTitle("Exit App");
+        builder.setMessage("Are you sure you want to leave the application?");
+        builder.setInverseBackgroundForced(true);
+        builder.setPositiveButton("Yes", (dialog, which) -> activity.finish());
+        builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
     public static void setSystemBarColor(Activity act) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

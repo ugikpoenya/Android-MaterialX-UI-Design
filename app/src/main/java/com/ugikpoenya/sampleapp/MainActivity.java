@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ugikpoenya.appmanager.Prefs;
@@ -52,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void showProgress(View view) {
         startActivity(new Intent(getApplicationContext(), ProgressActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        Tools.exitApp(this);
     }
 
 }
