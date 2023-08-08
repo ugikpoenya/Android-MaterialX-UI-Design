@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), ProgressActivity.class));
     }
 
+    public void showSearch(View view) {
+        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+    }
+
     @Override
     public void onBackPressed() {
         Tools.exitApp(this);

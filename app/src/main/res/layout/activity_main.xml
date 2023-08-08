@@ -269,6 +269,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
+                                android:onClick="showSearch"
                                 android:tint="@android:color/white"
                                 app:backgroundTint="@color/indigo_300"
                                 app:elevation="0dp"
@@ -280,7 +281,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="ALBUMS"
+                                android:text="Search"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_40" />
 
