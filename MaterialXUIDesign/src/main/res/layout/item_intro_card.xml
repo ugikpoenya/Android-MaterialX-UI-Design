@@ -27,8 +27,7 @@
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:layout_gravity="center_horizontal"
-                android:padding="@dimen/spacing_xlarge"
-                android:src="@drawable/illustration_01" />
+                android:padding="@dimen/spacing_xlarge" />
 
             <TextView
                 android:id="@+id/title"
