@@ -1,25 +1,146 @@
 package com.ugikpoenya.sampleapp
 
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView.GONE
+import android.widget.TextView.OnEditorActionListener
+import android.widget.TextView.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
-import com.ugikpoenya.appmanager.AdsManager
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.ugikpoenya.appmanager.SearchManager
+import com.ugikpoenya.appmanager.ServerManager
+import com.ugikpoenya.appmanager.holder.AdsViewHolder
+import com.ugikpoenya.materialx.ui.design.utils.Tools
 import com.ugikpoenya.sampleapp.databinding.ActivitySearchBinding
+import com.ugikpoenya.sampleapp.holder.ListViewHolder
+import com.ugikpoenya.sampleapp.holder.SuggestionViewHolder
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
+    val groupAdapter = GroupAdapter<GroupieViewHolder>()
+    val suggestionAdapter = GroupAdapter<GroupieViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        AdsManager().initBanner(this, binding.lyBannerAds)
+        initToolbar()
         initComponent()
     }
 
-    private fun initComponent() {
-        binding.btBack.setOnClickListener {
+    private fun initToolbar() {
+        setSupportActionBar(binding.toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        Tools.setSystemBarColor(this, com.ugikpoenya.materialx.ui.design.R.color.grey_5);
+        Tools.setSystemBarLight(this)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.home) {
             finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun initComponent() {
+        val recyclerSuggestionLayout = LinearLayoutManager(this)
+        recyclerSuggestionLayout.orientation = RecyclerView.VERTICAL
+        recyclerSuggestionLayout.generateDefaultLayoutParams()
+        binding.recyclerSuggestion.addItemDecoration(DividerItemDecoration(this, recyclerSuggestionLayout.orientation))
+        binding.recyclerSuggestion.layoutManager = recyclerSuggestionLayout
+        binding.recyclerSuggestion.adapter = suggestionAdapter
+        showSuggestionSearch();
+
+        val listLayoutManager = LinearLayoutManager(this)
+        listLayoutManager.orientation = RecyclerView.VERTICAL
+        listLayoutManager.generateDefaultLayoutParams()
+        binding.recyclerView.addItemDecoration(DividerItemDecoration(this, listLayoutManager.orientation))
+        binding.recyclerView.layoutManager = listLayoutManager
+        binding.recyclerView.adapter = groupAdapter
+
+        suggestionAdapter.setOnItemClickListener { item, view ->
+            when (item) {
+                is SuggestionViewHolder -> {
+                    binding.etSearch.setText(item.title)
+                    hideKeyboard()
+                    getData()
+                }
+            }
+        }
+
+        binding.etSearch.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                hideKeyboard()
+                getData()
+                return@OnEditorActionListener true
+            }
+            false
+        })
+
+        binding.btClear.setOnClickListener { binding.etSearch.setText("") }
+
+        binding.etSearch.setOnTouchListener { view, motionEvent ->
+            showSuggestionSearch()
+            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+            false
+        }
+    }
+
+    private fun hideKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
+
+    private fun showSuggestionSearch() {
+        suggestionAdapter.clear()
+        var index = 0
+        SearchManager().get(this).forEach {
+            if (index++ < 5) {
+                suggestionAdapter.add(SuggestionViewHolder(it, this))
+            }
+        }
+        binding.lytSuggestion.visibility = VISIBLE
+    }
+
+
+    private fun getData() {
+        binding.progressBar.visibility = VISIBLE
+        binding.lytNoResult.visibility = GONE
+        binding.lytSuggestion.visibility = GONE
+        groupAdapter.clear()
+
+        val searchKeyword = binding.etSearch.text.toString().trim()
+        SearchManager().add(this, searchKeyword)
+        ServerManager().getPosts(this) { posts ->
+            if (posts != null) {
+                binding.progressBar.visibility = GONE
+
+
+                var index = 0
+                posts
+                    .filter { ((it.post_title + " " + it.post_content).lowercase().contains(searchKeyword.lowercase())) }
+                    .forEach {
+                        groupAdapter.add(ListViewHolder(it, this))
+                        index++
+                        if ((index % 7) == 1) {
+                            groupAdapter.add(AdsViewHolder(this, 0, "home"))
+                        }
+                    }
+
+                if (groupAdapter.itemCount == 0) binding.lytNoResult.visibility = VISIBLE
+            }
         }
     }
 }
