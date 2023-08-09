@@ -26,7 +26,9 @@ android {
     kotlinOptions {
         jvmTarget = 11
     }
-
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -40,4 +42,6 @@ dependencies {
     // third party dependencies -------------------------------------------------------------------
     implementation 'com.balysv:material-ripple:1.0.2'                  // ripple effect
     implementation 'com.github.bumptech.glide:glide:4.14.2'             // image loader
+    implementation "com.github.lisawray.groupie:groupie:2.10.1"
+    implementation "com.github.lisawray.groupie:groupie-viewbinding:2.10.1"
 }
