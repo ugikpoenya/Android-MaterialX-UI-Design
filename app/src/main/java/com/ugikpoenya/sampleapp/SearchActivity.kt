@@ -19,6 +19,7 @@ import com.ugikpoenya.appmanager.ServerManager
 import com.ugikpoenya.appmanager.holder.AdsViewHolder
 import com.ugikpoenya.materialx.ui.design.holder.SuggestionViewHolder
 import com.ugikpoenya.materialx.ui.design.utils.Tools
+import com.ugikpoenya.materialx.ui.design.utils.ViewAnimation
 import com.ugikpoenya.sampleapp.databinding.ActivitySearchBinding
 import com.ugikpoenya.sampleapp.holder.ListViewHolder
 import com.xwray.groupie.GroupAdapter
@@ -124,7 +125,9 @@ class SearchActivity : AppCompatActivity() {
                 }
             }
 
-        binding.lytSuggestion.visibility = VISIBLE
+        if (binding.lytSuggestion.visibility == GONE) {
+            ViewAnimation.expand(binding.lytSuggestion)
+        }
     }
 
     private fun onDeleteItem(title: String) {
@@ -136,7 +139,7 @@ class SearchActivity : AppCompatActivity() {
     private fun getData() {
         binding.progressBar.visibility = VISIBLE
         binding.lytNoResult.visibility = GONE
-        binding.lytSuggestion.visibility = GONE
+        ViewAnimation.collapse(binding.lytSuggestion)
         groupAdapter.clear()
 
         val searchKeyword = binding.etSearch.text.toString().trim()
