@@ -1,8 +1,11 @@
 package com.ugikpoenya.sampleapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -13,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ugikpoenya.appmanager.Prefs
 import com.ugikpoenya.appmanager.SearchManager
 import com.ugikpoenya.appmanager.ServerManager
 import com.ugikpoenya.appmanager.holder.AdsViewHolder
@@ -86,6 +90,15 @@ class SearchActivity : AppCompatActivity() {
             false
         })
 
+
+        binding.etSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                showSuggestionSearch()
+            }
+        })
+
         binding.btClear.setOnClickListener { binding.etSearch.setText("") }
 
         binding.etSearch.setOnTouchListener { view, motionEvent ->
@@ -106,12 +119,20 @@ class SearchActivity : AppCompatActivity() {
     private fun showSuggestionSearch() {
         suggestionAdapter.clear()
         var index = 0
-        SearchManager().get(this).forEach {
-            if (index++ < 5) {
-                suggestionAdapter.add(SuggestionViewHolder(it, this))
+        SearchManager().get(this)
+            .filter { (it.lowercase().contains(binding.etSearch.text.toString().lowercase().trim())) }
+            .forEach {
+                if (index++ < 5) {
+                    suggestionAdapter.add(SuggestionViewHolder(it, ::onDeleteItem))
+                }
             }
-        }
+
         binding.lytSuggestion.visibility = VISIBLE
+    }
+
+    fun onDeleteItem(title: String) {
+        SearchManager().delete(this, title)
+        showSuggestionSearch()
     }
 
 
