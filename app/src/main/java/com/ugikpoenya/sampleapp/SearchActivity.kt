@@ -1,10 +1,8 @@
 package com.ugikpoenya.sampleapp
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.MenuItem
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
@@ -16,14 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ugikpoenya.appmanager.Prefs
 import com.ugikpoenya.appmanager.SearchManager
 import com.ugikpoenya.appmanager.ServerManager
 import com.ugikpoenya.appmanager.holder.AdsViewHolder
 import com.ugikpoenya.materialx.ui.design.utils.Tools
 import com.ugikpoenya.sampleapp.databinding.ActivitySearchBinding
 import com.ugikpoenya.sampleapp.holder.ListViewHolder
-import com.ugikpoenya.sampleapp.holder.SuggestionViewHolder
+import com.ugikpoenya.materialx.ui.design.holder.SuggestionViewHolder
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 

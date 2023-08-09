@@ -1,8 +1,8 @@
-package com.ugikpoenya.sampleapp.holder
+package com.ugikpoenya.materialx.ui.design.holder
 
 import android.view.View
-import com.ugikpoenya.sampleapp.R
-import com.ugikpoenya.sampleapp.databinding.ItemSuggestionBinding
+import com.ugikpoenya.materialx.ui.design.R
+import com.ugikpoenya.materialx.ui.design.databinding.ItemSuggestionBinding
 import com.xwray.groupie.viewbinding.BindableItem
 
 

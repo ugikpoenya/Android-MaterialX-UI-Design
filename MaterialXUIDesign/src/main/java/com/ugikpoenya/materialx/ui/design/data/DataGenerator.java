@@ -1,9 +1,9 @@
-package com.ugikpoenya.materialx.ui.design.utils.data;
+package com.ugikpoenya.materialx.ui.design.data;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 
-import com.ugikpoenya.materialx.ui.design.utils.model.Image;
+import com.ugikpoenya.materialx.ui.design.model.Image;
 
 import java.util.ArrayList;
 import java.util.List;

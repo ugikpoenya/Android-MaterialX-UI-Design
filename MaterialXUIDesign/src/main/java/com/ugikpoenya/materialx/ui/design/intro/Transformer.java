@@ -1,4 +1,4 @@
-package com.ugikpoenya.materialx.ui.design.utils.intro;
+package com.ugikpoenya.materialx.ui.design.intro;
 
 import android.view.View;
 

@@ -1,4 +1,4 @@
-package com.ugikpoenya.materialx.ui.design.utils.intro;
+package com.ugikpoenya.materialx.ui.design.intro;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -14,7 +14,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.ugikpoenya.materialx.ui.design.R;
-import com.ugikpoenya.materialx.ui.design.utils.model.Image;
+import com.ugikpoenya.materialx.ui.design.model.Image;
 
 import java.util.List;
 

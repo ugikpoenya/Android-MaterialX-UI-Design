@@ -1,4 +1,4 @@
-package com.ugikpoenya.materialx.ui.design.utils.model;
+package com.ugikpoenya.materialx.ui.design.model;
 
 import android.graphics.drawable.Drawable;
 

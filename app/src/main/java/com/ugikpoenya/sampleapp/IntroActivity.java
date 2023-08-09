@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ugikpoenya.appmanager.Prefs;
 import com.ugikpoenya.materialx.ui.design.utils.Tools;
-import com.ugikpoenya.materialx.ui.design.utils.data.DataGenerator;
-import com.ugikpoenya.materialx.ui.design.utils.intro.IntroPagerAdapter;
-import com.ugikpoenya.materialx.ui.design.utils.intro.Transformer;
-import com.ugikpoenya.materialx.ui.design.utils.model.Image;
+import com.ugikpoenya.materialx.ui.design.data.DataGenerator;
+import com.ugikpoenya.materialx.ui.design.intro.IntroPagerAdapter;
+import com.ugikpoenya.materialx.ui.design.intro.Transformer;
+import com.ugikpoenya.materialx.ui.design.model.Image;
 import com.ugikpoenya.sampleapp.databinding.ActivityIntroBinding;
 
 import java.util.ArrayList;
