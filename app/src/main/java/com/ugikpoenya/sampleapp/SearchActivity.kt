@@ -17,18 +17,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ugikpoenya.appmanager.SearchManager
 import com.ugikpoenya.appmanager.ServerManager
 import com.ugikpoenya.appmanager.holder.AdsViewHolder
+import com.ugikpoenya.materialx.ui.design.holder.SuggestionViewHolder
 import com.ugikpoenya.materialx.ui.design.utils.Tools
 import com.ugikpoenya.sampleapp.databinding.ActivitySearchBinding
 import com.ugikpoenya.sampleapp.holder.ListViewHolder
-import com.ugikpoenya.materialx.ui.design.holder.SuggestionViewHolder
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
-    val groupAdapter = GroupAdapter<GroupieViewHolder>()
-    val suggestionAdapter = GroupAdapter<GroupieViewHolder>()
+    private val groupAdapter = GroupAdapter<GroupieViewHolder>()
+    private val suggestionAdapter = GroupAdapter<GroupieViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,13 +40,13 @@ class SearchActivity : AppCompatActivity() {
 
     private fun initToolbar() {
         setSupportActionBar(binding.toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         Tools.setSystemBarColor(this, com.ugikpoenya.materialx.ui.design.R.color.grey_5);
         Tools.setSystemBarLight(this)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.home) {
+        if (item.itemId == android.R.id.home) {
             finish()
         }
         return super.onOptionsItemSelected(item)
@@ -68,7 +68,7 @@ class SearchActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = listLayoutManager
         binding.recyclerView.adapter = groupAdapter
 
-        suggestionAdapter.setOnItemClickListener { item, view ->
+        suggestionAdapter.setOnItemClickListener { item, _ ->
             when (item) {
                 is SuggestionViewHolder -> {
                     binding.etSearch.setText(item.title)
@@ -78,7 +78,7 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        binding.etSearch.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+        binding.etSearch.setOnEditorActionListener(OnEditorActionListener { _, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 hideKeyboard()
                 getData()
@@ -127,7 +127,7 @@ class SearchActivity : AppCompatActivity() {
         binding.lytSuggestion.visibility = VISIBLE
     }
 
-    fun onDeleteItem(title: String) {
+    private fun onDeleteItem(title: String) {
         SearchManager().delete(this, title)
         showSuggestionSearch()
     }
