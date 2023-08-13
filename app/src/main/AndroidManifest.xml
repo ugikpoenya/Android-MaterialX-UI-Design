@@ -27,6 +27,9 @@
             android:name=".ListActivity"
             android:exported="false" />
         <activity
+            android:name=".TabActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

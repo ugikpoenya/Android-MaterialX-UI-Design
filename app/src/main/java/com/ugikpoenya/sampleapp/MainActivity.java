@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), ListActivity.class));
     }
 
+    public void showTab(View view) {
+        startActivity(new Intent(getApplicationContext(), TabActivity.class));
+    }
+
     public void showBottomNavigation(View view) {
         startActivity(new Intent(getApplicationContext(), BottomNavigationActivity.class));
     }
