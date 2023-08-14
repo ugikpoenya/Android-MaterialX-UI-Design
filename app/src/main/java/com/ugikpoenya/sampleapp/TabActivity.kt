@@ -59,13 +59,9 @@ class TabActivity : AppCompatActivity() {
         }
 
 
-        var tab_1 = binding.tabLayout.newTab().setText("Tab 1")
-        var tab_2 = binding.tabLayout.newTab().setText("Tab 2")
-        var tab_3 = binding.tabLayout.newTab().setText("Tab 3")
-
-        binding.tabLayout.addTab(tab_1)
-        binding.tabLayout.addTab(tab_2)
-        binding.tabLayout.addTab(tab_3)
+        for (i in 0..5) {
+            binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Tab $i"))
+        }
 
         binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
