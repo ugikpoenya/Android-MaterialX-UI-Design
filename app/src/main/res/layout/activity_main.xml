@@ -58,8 +58,8 @@
                 android:layout_height="?android:attr/actionBarSize"
                 android:background="@android:color/transparent"
                 android:clickable="true"
-                android:tint="@color/grey_60"
-                app:srcCompat="@drawable/ic_search" />
+                app:srcCompat="@drawable/ic_search"
+                app:tint="@color/grey_60" />
 
             <EditText
                 android:id="@+id/et_search"
@@ -81,8 +81,8 @@
                 android:layout_height="?android:attr/actionBarSize"
                 android:background="@android:color/transparent"
                 android:clickable="true"
-                android:tint="@color/grey_60"
-                app:srcCompat="@drawable/ic_menu" />
+                app:srcCompat="@drawable/ic_menu"
+                app:tint="@color/grey_60" />
 
         </LinearLayout>
 
@@ -562,6 +562,13 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/string_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_large"
+                android:text="@string/YES" />
 
         </LinearLayout>
 

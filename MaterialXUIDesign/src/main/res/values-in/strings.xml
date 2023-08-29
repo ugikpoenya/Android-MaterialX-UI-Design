@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="OK">OK</string>
+    <string name="GOT_IT">MENGERTI</string>
+    <string name="YES">YA</string>
+    <string name="NO">TIDAK</string>
+    <string name="SETTING">PENGATURAN</string>
+    <string name="CANCEL">BATAL</string>
+    <string name="CLOSE">TUTUP</string>
+    <string name="UPDATE">PERBARUI</string>
+    <string name="HIDE">SEMBUNYI</string>
+    <string name="RETRY">COBA LAGI</string>
+    <string name="TRY_AGAIN">COBA LAGI</string>
+    <string name="DETAILS">RINCIAN</string>
+    <string name="FAILED">FAILED</string>
+    <string name="TYPE_SEARCH">CARI</string>
+    <string name="DELETE">HAPUS</string>
+    <string name="DISCARD">BATAL</string>
+    <string name="AGREE">SETUJU</string>
+    <string name="DISAGREE">TIDAK SETUJU</string>
+    <string name="OPEN">BUKA</string>
+    <string name="SAVE">SIMPAN</string>
+    <string name="NEXT">SELANJUTNYA</string>
+    <string name="BACK">KEMBALI</string>
+    <string name="DONE">SELESAI</string>
+    <string name="SKIP">LEWATI</string>
+    <string name="DOWNLOAD">UNDUH</string>
+    <string name="DOWNLOADING">MENGUNDUH</string>
+    <string name="FINISH">SELESAI</string>
+    <string name="CONFIRMMATION">KONFIRMASI</string>
+    <string name="EXIT_APP">Keluar aplikasi</string>
+    <string name="EXIT_APP_CONFIRM">Apakah Anda yakin ingin keluar dari aplikasi?</string>
+    <string name="DELETE_CONFIRM">Apakah anda yakin akan menghapus ini?</string>
+</resources>

@@ -50,11 +50,11 @@ public class Tools {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setCancelable(true);
         builder.setIcon(R.drawable.ic_baseline_cancel_24);
-        builder.setTitle("Exit App");
-        builder.setMessage("Are you sure you want to leave the application?");
+        builder.setTitle(activity.getString(R.string.EXIT_APP));
+        builder.setMessage(activity.getString(R.string.EXIT_APP_CONFIRM));
         builder.setInverseBackgroundForced(true);
-        builder.setPositiveButton("Yes", (dialog, which) -> activity.finish());
-        builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+        builder.setPositiveButton(activity.getString(R.string.YES), (dialog, which) -> activity.finish());
+        builder.setNegativeButton(activity.getString(R.string.NO), (dialog, which) -> dialog.dismiss());
         AlertDialog alert = builder.create();
         alert.show();
     }

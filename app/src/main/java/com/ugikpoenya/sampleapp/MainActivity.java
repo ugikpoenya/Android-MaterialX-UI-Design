@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ugikpoenya.appmanager.Prefs;
 import com.ugikpoenya.materialx.ui.design.utils.Tools;
 import com.ugikpoenya.sampleapp.databinding.ActivityMainBinding;
+
+import java.lang.reflect.Field;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,18 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         initToolbar();
+
+        Field[] fields = R.string.class.getFields();
+        for (int i = 0; i < fields.length; i++) {
+            String str = "";
+            int resId = getResources().getIdentifier(fields[i].getName(), "string", getPackageName());
+            str += fields[i].getName() + " = ";
+            if (resId != 0) {
+                str += getResources().getString(resId);
+            }
+            str += "\n";
+            binding.stringValue.append(str);
+        }
     }
 
     private void initToolbar() {
