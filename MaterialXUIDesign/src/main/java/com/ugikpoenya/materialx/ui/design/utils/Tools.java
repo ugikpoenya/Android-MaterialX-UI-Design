@@ -176,6 +176,7 @@ public class Tools {
             Glide.with(ctx)
                     .asBitmap()
                     .load(url)
+                    .placeholder(R.drawable.progress_animation)
                     .centerCrop()
                     .into(new BitmapImageViewTarget(img) {
                         @Override
@@ -194,6 +195,7 @@ public class Tools {
             Glide.with(ctx).load(url)
                     .transition(withCrossFade())
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .placeholder(R.drawable.progress_animation)
                     .into(img);
         } catch (Exception e) {
         }
