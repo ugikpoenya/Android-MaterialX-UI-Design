@@ -176,7 +176,29 @@ public class Tools {
             Glide.with(ctx)
                     .asBitmap()
                     .load(url)
-                    .placeholder(R.drawable.progress_animation)
+                    .centerCrop()
+                    .into(new BitmapImageViewTarget(img) {
+                        @Override
+                        protected void setResource(Bitmap resource) {
+                            RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(ctx.getResources(), resource);
+                            circularBitmapDrawable.setCircular(true);
+                            img.setImageDrawable(circularBitmapDrawable);
+                        }
+                    });
+        } catch (Exception e) {
+        }
+    }
+
+    public static void displayImageRound(final Context ctx, final ImageView img, String url, boolean placeholder) {
+        displayImageRound(ctx, img, url, R.drawable.progress_animation);
+    }
+
+    public static void displayImageRound(final Context ctx, final ImageView img, String url, int placeholder) {
+        try {
+            Glide.with(ctx)
+                    .asBitmap()
+                    .load(url)
+                    .placeholder(placeholder)
                     .centerCrop()
                     .into(new BitmapImageViewTarget(img) {
                         @Override
@@ -195,7 +217,21 @@ public class Tools {
             Glide.with(ctx).load(url)
                     .transition(withCrossFade())
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .placeholder(R.drawable.progress_animation)
+                    .into(img);
+        } catch (Exception e) {
+        }
+    }
+
+    public static void displayImageOriginal(Context ctx, ImageView img, String url, boolean placeholder) {
+        displayImageOriginal(ctx, img, url, R.drawable.progress_animation);
+    }
+
+    public static void displayImageOriginal(Context ctx, ImageView img, String url, int placeholder) {
+        try {
+            Glide.with(ctx).load(url)
+                    .transition(withCrossFade())
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .placeholder(placeholder)
                     .into(img);
         } catch (Exception e) {
         }
