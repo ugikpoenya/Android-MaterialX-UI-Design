@@ -204,7 +204,7 @@ public class Tools {
             Glide.with(ctx).load(url)
                     .transition(withCrossFade())
                     .placeholder(circularProgressDrawable)
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                    .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .into(img);
         } catch (Exception e) {
         }
