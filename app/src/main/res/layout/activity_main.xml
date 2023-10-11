@@ -326,6 +326,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:clickable="true"
+                                android:onClick="showDarkTheme"
                                 android:tint="@android:color/white"
                                 app:backgroundTint="@color/light_green_400"
                                 app:elevation="0dp"
@@ -337,7 +338,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="ARTICLES"
+                                android:text="Drk Theme"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_40" />
                         </LinearLayout>

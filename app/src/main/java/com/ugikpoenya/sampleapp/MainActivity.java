@@ -76,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), SearchActivity.class));
     }
 
+    public void showDarkTheme(View view) {
+        startActivity(new Intent(getApplicationContext(), DarkThemeActivity.class));
+    }
+
     @Override
     public void onBackPressed() {
         Tools.exitApp(this);

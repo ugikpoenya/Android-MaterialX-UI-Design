@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".DarkThemeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProgressActivity"
             android:exported="false" />
         <activity
