@@ -100,11 +100,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:descendantFocusability="blocksDescendants"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <View
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="35dp" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/imagePager"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="@dimen/spacing_large" />
+
+            <LinearLayout
+                android:id="@+id/layout_dots"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

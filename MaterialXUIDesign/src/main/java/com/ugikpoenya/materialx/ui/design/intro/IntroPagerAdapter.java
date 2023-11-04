@@ -39,8 +39,12 @@ public class IntroPagerAdapter {
             layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             View view = layoutInflater.inflate(item_intro, container, false);
-            ((TextView) view.findViewById(R.id.title)).setText(items.get(position).name);
-            ((TextView) view.findViewById(R.id.description)).setText(items.get(position).brief);
+            if (items.get(position).name != null) {
+                ((TextView) view.findViewById(R.id.title)).setText(items.get(position).name);
+            }
+            if (items.get(position).brief != null) {
+                ((TextView) view.findViewById(R.id.description)).setText(items.get(position).brief);
+            }
             ((ImageView) view.findViewById(R.id.image)).setImageResource(items.get(position).image);
             container.addView(view);
 
@@ -104,6 +108,14 @@ public class IntroPagerAdapter {
             ProgressDots(context, max_step, 0, dotsLayout, color);
         }
 
+        public onChangeListener(Context context, int max_step, LinearLayout dotsLayout, int color) {
+            this.context = context;
+            this.max_step = max_step;
+            this.dotsLayout = dotsLayout;
+            this.color = color;
+            ProgressDots(context, max_step, 0, dotsLayout, color);
+        }
+
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -112,10 +124,12 @@ public class IntroPagerAdapter {
         @Override
         public void onPageSelected(int position) {
             ProgressDots(context, max_step, position, dotsLayout, color);
-            if (position == max_step - 1) {
-                btnNext.setText(context.getString(R.string.DONE));
-            } else {
-                btnNext.setText(context.getString(R.string.NEXT));
+            if (btnNext != null) {
+                if (position == max_step - 1) {
+                    btnNext.setText(context.getString(R.string.DONE));
+                } else {
+                    btnNext.setText(context.getString(R.string.NEXT));
+                }
             }
         }
 

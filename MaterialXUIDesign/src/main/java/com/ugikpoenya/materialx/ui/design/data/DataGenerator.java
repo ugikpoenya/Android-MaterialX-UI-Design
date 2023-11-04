@@ -24,4 +24,16 @@ public class DataGenerator {
         }
         return items;
     }
+
+    public static List<Image> getListImage(Context ctx, int intro_image) {
+        List<Image> items = new ArrayList<>();
+        TypedArray drw_arr = ctx.getResources().obtainTypedArray(intro_image);
+        for (int i = 0; i < drw_arr.length(); i++) {
+            Image obj = new Image();
+            obj.image = drw_arr.getResourceId(i, -1);
+            obj.imageDrw = ctx.getResources().getDrawable(obj.image);
+            items.add(obj);
+        }
+        return items;
+    }
 }

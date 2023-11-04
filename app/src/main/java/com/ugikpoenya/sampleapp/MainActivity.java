@@ -2,19 +2,30 @@ package com.ugikpoenya.sampleapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ugikpoenya.appmanager.Prefs;
+import com.ugikpoenya.materialx.ui.design.data.DataGenerator;
+import com.ugikpoenya.materialx.ui.design.intro.IntroPagerAdapter;
+import com.ugikpoenya.materialx.ui.design.model.Image;
 import com.ugikpoenya.materialx.ui.design.utils.Tools;
 import com.ugikpoenya.sampleapp.databinding.ActivityMainBinding;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+
+    private IntroPagerAdapter.MyViewPagerAdapter myViewPagerAdapter;
+    private List<Image> items = new ArrayList<>();
+    private Runnable runnable = null;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         initToolbar();
-
+        initSlider();
         Field[] fields = R.string.class.getFields();
         for (int i = 0; i < fields.length; i++) {
             String str = "";
@@ -34,6 +45,27 @@ public class MainActivity extends AppCompatActivity {
             str += "\n";
             binding.stringValue.append(str);
         }
+    }
+
+    private void initSlider() {
+        items = DataGenerator.getListImage(this, R.array.intro_image);
+        IntroPagerAdapter.onChangeListener viewPagerPageChangeListener = new IntroPagerAdapter.onChangeListener(this, items.size(), binding.layoutDots, R.color.grey_900);
+        myViewPagerAdapter = new IntroPagerAdapter.MyViewPagerAdapter(this, items, R.layout.item_slider_image);
+        binding.imagePager.setAdapter(myViewPagerAdapter);
+        binding.imagePager.addOnPageChangeListener(viewPagerPageChangeListener);
+
+        startAutoSlider(myViewPagerAdapter.getCount());
+    }
+
+    private void startAutoSlider(final int count) {
+        runnable = () -> {
+            int pos = binding.imagePager.getCurrentItem();
+            pos = pos + 1;
+            if (pos >= count) pos = 0;
+            binding.imagePager.setCurrentItem(pos);
+            handler.postDelayed(runnable, 2000);
+        };
+        handler.postDelayed(runnable, 2000);
     }
 
     private void initToolbar() {
