@@ -147,10 +147,23 @@ public class Tools {
     public static void displayImageOriginal(Context ctx, ImageView img, @DrawableRes int drawable) {
         try {
             Glide.with(ctx).load(drawable)
-                    .transition(withCrossFade())
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .into(img);
         } catch (Exception e) {
+        }
+    }
+
+    public static void displayImageOriginal(Context ctx, ImageView img, @DrawableRes int drawable, Boolean transition) {
+        if (transition) {
+            try {
+                Glide.with(ctx).load(drawable)
+                        .transition(withCrossFade())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .into(img);
+            } catch (Exception e) {
+            }
+        } else {
+            displayImageOriginal(ctx, img, drawable);
         }
     }
 
@@ -202,12 +215,31 @@ public class Tools {
             circularProgressDrawable.setCenterRadius(30f);
             circularProgressDrawable.start();
             Glide.with(ctx).load(url)
-                    .transition(withCrossFade())
                     .placeholder(circularProgressDrawable)
 //                    .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .into(img);
         } catch (Exception e) {
         }
+    }
+
+    public static void displayImageOriginal(Context ctx, ImageView img, String url, Boolean transition) {
+        if (transition) {
+            try {
+                CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(ctx);
+                circularProgressDrawable.setStrokeWidth(5f);
+                circularProgressDrawable.setCenterRadius(30f);
+                circularProgressDrawable.start();
+                Glide.with(ctx).load(url)
+                        .transition(withCrossFade())
+                        .placeholder(circularProgressDrawable)
+//                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .into(img);
+            } catch (Exception e) {
+            }
+        } else {
+            displayImageOriginal(ctx, img, url);
+        }
+
     }
 
     public static String getFormattedDateShort(Long dateTime) {
