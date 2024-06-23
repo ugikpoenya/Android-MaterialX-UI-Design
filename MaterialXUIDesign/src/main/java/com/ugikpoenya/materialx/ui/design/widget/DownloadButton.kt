@@ -29,9 +29,25 @@ class DownloadButton @JvmOverloads constructor(
         btnDownload = findViewById(R.id.btnDownload)
     }
 
+    fun init(text: String, progress: Int) {
+        progressBar.progress = progress
+        if (progress == 100) {
+            iconImageView.setImageResource(R.drawable.ic_download_done)
+        } else {
+            iconImageView.setImageResource(R.drawable.ic_file_download)
+        }
+
+        statusTextView.text = ""
+        textView.text = text
+    }
+
     fun setProgress(progress: Int) {
         progressBar.progress = progress
         statusTextView.text = "$progress%"
+    }
+
+    fun getProgress(): Int {
+        return progressBar.progress
     }
 
     fun setText(text: String) {
@@ -51,6 +67,7 @@ class DownloadButton @JvmOverloads constructor(
         iconImageView.setImageResource(R.drawable.ic_download_done)
         textView.text = "Downloading Completed"
         progressBar.progress = 100
+        statusTextView.text = ""
     }
 
     fun setOnDownloadClickListener(listener: OnClickListener) {

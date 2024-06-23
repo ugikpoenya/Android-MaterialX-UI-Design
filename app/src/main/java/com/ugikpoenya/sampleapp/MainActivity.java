@@ -48,17 +48,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         DownloadButton btnDownload1 = binding.btnDownload1;
-        btnDownload1.setProgress(0);
-        btnDownload1.setText("Download Mod");
+        btnDownload1.init("Download Mod", 0);
         btnDownload1.setOnDownloadClickListener(v -> {
-            startDummyProgress(btnDownload1);
+            if (btnDownload1.getProgress() == 0) {
+                startDummyProgress(btnDownload1);
+            }
         });
 
         DownloadButton btnDownload2 = binding.btnDownload2;
-        btnDownload2.setProgress(0);
-        btnDownload2.setText("Download Livery");
+        btnDownload2.init("Download Livery", 100);
         btnDownload2.setOnDownloadClickListener(v -> {
-            startDummyProgress(btnDownload2);
+            if (btnDownload2.getProgress() == 0) {
+                startDummyProgress(btnDownload2);
+            }
         });
     }
 
