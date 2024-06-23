@@ -120,6 +120,18 @@
                 android:gravity="center"
                 android:orientation="horizontal" />
 
+            <com.ugikpoenya.materialx.ui.design.widget.DownloadButton
+                android:id="@+id/btnDownload1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_large" />
+
+            <com.ugikpoenya.materialx.ui.design.widget.DownloadButton
+                android:id="@+id/btnDownload2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_large" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

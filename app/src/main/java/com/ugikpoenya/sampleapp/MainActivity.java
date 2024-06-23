@@ -12,6 +12,7 @@ import com.ugikpoenya.materialx.ui.design.data.DataGenerator;
 import com.ugikpoenya.materialx.ui.design.intro.IntroPagerAdapter;
 import com.ugikpoenya.materialx.ui.design.model.Image;
 import com.ugikpoenya.materialx.ui.design.utils.Tools;
+import com.ugikpoenya.materialx.ui.design.widget.DownloadButton;
 import com.ugikpoenya.sampleapp.databinding.ActivityMainBinding;
 
 import java.lang.reflect.Field;
@@ -45,6 +46,41 @@ public class MainActivity extends AppCompatActivity {
             str += "\n";
             binding.stringValue.append(str);
         }
+
+        DownloadButton btnDownload1 = binding.btnDownload1;
+        btnDownload1.setProgress(0);
+        btnDownload1.setText("Download Mod");
+        btnDownload1.setOnDownloadClickListener(v -> {
+            startDummyProgress(btnDownload1);
+        });
+
+        DownloadButton btnDownload2 = binding.btnDownload2;
+        btnDownload2.setProgress(0);
+        btnDownload2.setText("Download Livery");
+        btnDownload2.setOnDownloadClickListener(v -> {
+            startDummyProgress(btnDownload2);
+        });
+    }
+
+    private void startDummyProgress(final DownloadButton button) {
+        new Thread(() -> {
+            runOnUiThread(() -> button.setStart());
+
+            int progress = 0;
+            while (progress <= 100) {
+                final int currentProgress = progress;
+                runOnUiThread(() -> {
+                    if (currentProgress == 100) button.setStop();
+                    button.setProgress(currentProgress);
+                });
+                progress++;
+                try {
+                    Thread.sleep(100);  // Update every 100 milliseconds
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     private void initSlider() {

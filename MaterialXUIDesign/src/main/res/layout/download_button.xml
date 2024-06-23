@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btnDownloadCard"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_xlarge"
+        app:cardBackgroundColor="@color/blue_600"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:id="@+id/btnDownload"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true">
+
+            <ProgressBar
+                android:id="@+id/btnDownloadProgress"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:indeterminate="false"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:progress="60"
+                android:progressDrawable="@drawable/progressbar_green" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/spacing_medium">
+
+                <View
+                    android:layout_width="@dimen/spacing_large"
+                    android:layout_height="0dp" />
+
+                <TextView
+                    android:id="@+id/btnDownloadText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:text="Download"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/btnDownloadStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/spacing_middle"
+                    android:text="10%"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:fontFamily="sans-serif-medium" />
+
+                <ImageView
+                    android:id="@+id/btnDownloadIcon"
+                    android:layout_width="@dimen/spacing_mxlarge"
+                    android:layout_height="@dimen/spacing_mxlarge"
+                    android:layout_marginHorizontal="@dimen/spacing_middle"
+                    app:srcCompat="@drawable/ic_file_download"
+                    app:tint="@android:color/white" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</merge>
