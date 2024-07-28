@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.ugikpoenya.appmanager.Prefs;
 import com.ugikpoenya.materialx.ui.design.data.DataGenerator;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         DownloadButton btnDownload1 = binding.btnDownload1;
         btnDownload1.init("Download Mod", 0);
+        btnDownload1.setColor(ContextCompat.getColor(this, R.color.yellow_900));
+        btnDownload1.setProgressDrawable(ContextCompat.getDrawable(this, R.drawable.progressbar_red));
         btnDownload1.setOnDownloadClickListener(v -> {
             if (btnDownload1.getProgress() == 0) {
                 startDummyProgress(btnDownload1);

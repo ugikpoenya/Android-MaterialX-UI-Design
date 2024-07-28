@@ -1,6 +1,8 @@
 package com.ugikpoenya.materialx.ui.design.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.ImageView
@@ -8,8 +10,10 @@ import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import com.ugikpoenya.materialx.ui.design.R
 
+@SuppressLint("UseCompatLoadingForDrawables")
 class DownloadButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0,
 ) : CardView(context, attrs, defStyleAttr) {
@@ -46,12 +50,35 @@ class DownloadButton @JvmOverloads constructor(
         statusTextView.text = "$progress%"
     }
 
+    fun setProgressDrawable(progressDrawable: Drawable?) {
+        progressBar.progressDrawable = progressDrawable
+    }
+
+
     fun getProgress(): Int {
         return progressBar.progress
     }
 
     fun setText(text: String) {
         textView.text = text
+    }
+
+    fun setColor(color:Int) {
+        textView.setTextColor(color)
+        statusTextView.setTextColor(color)
+        iconImageView.setColorFilter(color)
+    }
+
+    fun setTextColor(color:Int) {
+        textView.setTextColor(color)
+    }
+
+    fun setStatusColor(color:Int) {
+        statusTextView.setTextColor(color)
+    }
+
+    fun setIconColor(color:Int) {
+        iconImageView.setColorFilter(color)
     }
 
     fun setIcon(icon: Int) {
