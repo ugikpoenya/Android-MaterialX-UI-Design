@@ -6,7 +6,6 @@
         android:id="@+id/btnDownloadCard"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spacing_xlarge"
-        app:cardBackgroundColor="@color/blue_600"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp">
 
@@ -27,6 +26,7 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:progress="60"
+                android:background="@color/transparent"
                 android:progressDrawable="@drawable/progressbar_green" />
 
             <LinearLayout
