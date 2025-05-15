@@ -37,4 +37,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // google gson --------------------------------------------------------------------------------
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // third party dependencies -------------------------------------------------------------------
+    implementation("com.balysv:material-ripple:1.0.2")                 // ripple effect
+    implementation("com.github.bumptech.glide:glide:4.16.0")             // image loader
+    implementation("com.github.lisawray.groupie:groupie:2.10.1")
+    implementation("com.github.lisawray.groupie:groupie-viewbinding:2.10.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }

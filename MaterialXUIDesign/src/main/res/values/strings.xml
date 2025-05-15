@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="OK">OK</string>
+    <string name="GOT_IT">GOT IT</string>
+    <string name="YES">YES</string>
+    <string name="NO">NO</string>
+    <string name="SETTING">SETTING</string>
+    <string name="CANCEL">CANCEL</string>
+    <string name="CLOSE">CLOSE</string>
+    <string name="UPDATE">UPDATE</string>
+    <string name="DISMISS" translatable="false">DISMISS</string>
+    <string name="HIDE">HIDE</string>
+    <string name="RETRY">RETRY</string>
+    <string name="TRY_AGAIN">TRY AGAIN</string>
+    <string name="DETAILS">DETAILS</string>
+    <string name="FAILED">FAILED</string>
+    <string name="TYPE_SEARCH">SEARCH</string>
+    <string name="NO_IMAGE" translatable="false">NO IMAGE</string>
+    <string name="DELETE">DELETE</string>
+    <string name="DISCARD">DISCARD</string>
+    <string name="AGREE">AGREE</string>
+    <string name="DISAGREE">DISAGREE</string>
+    <string name="OPEN">OPEN</string>
+    <string name="SAVE">SAVE</string>
+    <string name="NEXT">NEXT</string>
+    <string name="BACK">BACK</string>
+    <string name="DONE">DONE</string>
+    <string name="SKIP">SKIP</string>
+    <string name="DOWNLOAD">DOWNLOAD</string>
+    <string name="DOWNLOADING">DOWNLOADING</string>
+    <string name="FINISH">FINISH</string>
+    <string name="CONFIRMMATION">CONFIRMMATION</string>
+    <string name="DELETE_CONFIRM">Are you sure you want to delete this?</string>
+    <string name="EXIT_APP">Exit App</string>
+    <string name="EXIT_APP_CONFIRM">Are you sure you want to leave the application?</string>
+</resources>
